@@ -2,7 +2,7 @@
 
 ![spacex-ppt-skill hero](docs/images/readme-hero-final.png)
 
-一个用于生成 **SpaceX 路演风格演示文稿** 的 Codex Skill。
+一个用于生成 **SpaceX 路演风格演示文稿** 的 AI Skill。
 
 纯黑底色、全屏摄影、渐隐遮罩、轻量大写标题、克制的数据排版。适合把主题、提纲或散乱笔记快速整理成具有发布会质感的 PDF 幻灯片。
 
@@ -39,15 +39,15 @@ spacex-ppt-skill/
 
 ## 安装
 
-最简单的方式：把下面这句话发给你的 Codex 智能体，让它自动安装：
+最简单的方式：把下面这句话发给你的智能体，让它自动安装：
 
 ```text
-请从这个 GitHub 仓库安装 Codex Skill：https://github.com/abxxvrv/spacex-ppt-skill 。只安装仓库中的 spacex-ppt-skill 子目录到我的 Codex skills 目录，目标路径为 ~/.codex/skills/spacex-ppt-skill，并确认其中的 SKILL.md 可以被正常发现。
+请从这个 GitHub 仓库安装这个 Skill：https://github.com/abxxvrv/spacex-ppt-skill 。只安装仓库中的 spacex-ppt-skill 子目录到我的本地 skills 目录，目标路径为 ~/.codex/skills/spacex-ppt-skill，并确认其中的 SKILL.md 可以被正常发现。
 ```
 
 如果你想手动安装，也可以复制文件夹：
 
-把仓库中的 `spacex-ppt-skill/` 子目录复制到你的 Codex skills 目录：
+把仓库中的 `spacex-ppt-skill/` 子目录复制到你的本地 skills 目录：
 
 ```text
 ~/.codex/skills/spacex-ppt-skill
@@ -59,7 +59,7 @@ Windows 通常是：
 C:\Users\<你的用户名>\.codex\skills\spacex-ppt-skill
 ```
 
-安装后，在 Codex 中提出类似请求即可触发：
+安装后，向你的智能体提出类似请求即可触发：
 
 ```text
 用 SpaceX 风格帮我做一份 AI 芯片创业公司的 10 页路演 PPT
