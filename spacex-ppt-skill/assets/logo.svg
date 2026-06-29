@@ -1,0 +1,5 @@
+<svg viewBox="0 0 150 34" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Generic swooshed-X corner mark (evokes an aerospace wordmark glyph, not a trademark) -->
+  <path d="M2 30 C 40 24, 96 12, 148 3" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M40 3 L 78 30" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

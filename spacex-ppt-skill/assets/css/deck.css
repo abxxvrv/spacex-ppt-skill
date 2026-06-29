@@ -1,0 +1,408 @@
+/* ============================================================
+   SPACEX-STYLE DECK — design system
+   Canvas: 1920 x 1080 (16:9). One .slide = one rendered page.
+   Rules of the look (do not break):
+     - Background is pure black. The ONLY text colors are white + gray.
+     - No brand accent color. All color comes from photos.
+     - Headlines: UPPERCASE, light weight, wide tracking.
+     - Generous margins, lots of negative space, thin 1px rules.
+     - One photo per slide, full-bleed, faded into black with a scrim.
+   ============================================================ */
+
+@font-face {
+  font-family: "Deck Sans";
+  src: url("../fonts/Saira.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: block;
+}
+@font-face {
+  font-family: "Deck Grotesque";
+  src: url("../fonts/Archivo.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: block;
+}
+
+:root {
+  --bg:        #000000;
+  --white:     #ffffff;
+  --gray:      #a7a7a7;   /* body text */
+  --gray-dim:  #6f6f6f;   /* footnotes, page numbers */
+  --rule:      rgba(255, 255, 255, 0.22);
+  --rule-soft: rgba(255, 255, 255, 0.12);
+
+  --pad-x: 86px;          /* left/right margin */
+  --pad-y: 74px;          /* top/bottom margin */
+
+  /* CJK falls back per-glyph to a LIGHT Chinese face so 中文 matches the thin
+     Latin treatment. Noto Sans SC / YaHei Light are common on Win/macOS. */
+  --font-head: "Deck Sans", "Archivo", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  --font-body: "Deck Sans", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { background: #000; }
+
+/* ---- The page ---------------------------------------------------------- */
+.slide {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  background: var(--bg);
+  overflow: hidden;
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  page-break-after: always;
+}
+
+/* Inner content padding box (sits above bg/scrim layers) */
+.pad {
+  position: absolute;
+  inset: 0;
+  padding: var(--pad-y) var(--pad-x);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Background image + scrim ------------------------------------------ */
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+/* Position helpers when the photo subject must sit on one side */
+.bg--right { object-position: right center; }
+.bg--left  { object-position: left center; }
+
+/* Scrims: fade the photo into pure black so text stays readable.
+   This is the core technique. Stack multiple if needed. */
+.scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.scrim--l    { background: linear-gradient(90deg,  #000 0%, #000 24%, rgba(0,0,0,0) 64%); }
+.scrim--r    { background: linear-gradient(270deg, #000 0%, #000 24%, rgba(0,0,0,0) 64%); }
+.scrim--b    { background: linear-gradient(0deg,   #000 0%, rgba(0,0,0,0) 55%); }
+.scrim--t    { background: linear-gradient(180deg, #000 0%, rgba(0,0,0,0) 45%); }
+.scrim--full { background: rgba(0,0,0,0.45); }       /* even wash over a busy photo */
+.scrim--vignette {
+  background: radial-gradient(120% 90% at 50% 45%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.75) 100%);
+}
+/* A hard vertical seam: solid black panel on the left half, photo on the right */
+.scrim--seam { background: linear-gradient(90deg, #000 0%, #000 42%, rgba(0,0,0,0) 58%); }
+
+/* ---- Typography -------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  color: var(--white);
+}
+.eyebrow--dim { color: var(--gray); }
+
+.headline {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 72px;
+  line-height: 1.04;
+  letter-spacing: 0.012em;
+  color: var(--white);
+}
+.headline--xl { font-size: 92px; }
+.headline--sm { font-size: 52px; }
+/* Sentence-case variant (cover title, some section openers) */
+.headline--sentence { text-transform: none; font-weight: 300; letter-spacing: 0; }
+
+.subhead {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+
+.body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+  color: var(--gray);
+  max-width: 46ch;
+}
+.body--bright { color: #dcdcdc; }
+.body + .body { margin-top: 28px; }
+
+.footnote {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--gray-dim);
+}
+
+/* ---- Big stat numbers (50+, 9,600+, ~75%) ------------------------------ */
+.stat__num {
+  font-family: var(--font-head);
+  font-weight: 250;
+  font-size: 104px;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+.stat__num--sm { font-size: 72px; }
+.stat__label {
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--gray);
+  margin-top: 8px;
+}
+.stat__rule { width: 132px; height: 1px; background: var(--rule); margin-top: 14px; }
+
+/* ---- Rules / dividers --------------------------------------------------- */
+.rule  { width: 100%; height: 1px; background: var(--rule); }
+.rule--soft { background: var(--rule-soft); }
+
+/* ---- Label / value rows (Offering Summary style) ----------------------- */
+.rows { display: flex; flex-direction: column; }
+.row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+}
+.row:last-child { border-bottom: 1px solid var(--rule); }
+.row__label {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+.row__value { font-size: 24px; line-height: 1.45; color: var(--gray); overflow-wrap: anywhere; }
+
+/* ---- Columns (N OF 1 / Milestones) ------------------------------------- */
+/* Base sets a 3-col default so an unrecognized count never collapses to 1. */
+.cols { display: grid; gap: 48px; flex: 1; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.colhead {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 26px;
+}
+
+/* metric stacked inside a column: small label left, big value right */
+.metric {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.metric__label {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  line-height: 1.3;
+}
+.metric__val {
+  font-family: var(--font-head);
+  font-weight: 250;
+  font-size: 50px;
+  line-height: 0.9;
+  color: var(--white);
+  text-align: right;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+/* For word/phrase values (not big numbers) — smaller, wraps cleanly.
+   But prefer the CARD layout below for products with several text specs. */
+.metric__val--text { font-size: 30px; font-weight: 300; line-height: 1.2; }
+
+/* ---- Product / spec cards (matrix of items, each with several specs) ---- */
+/* Use this — NOT metric columns — when items have multi-word text specs.
+   Stacked label/value avoids the ugly mid-phrase wraps that big right-aligned
+   values produce. */
+.cards { display: grid; gap: 44px 60px; }
+.cards-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.card__name {
+  font-family: var(--font-head); font-weight: 600; font-size: 26px;
+  letter-spacing: 0.03em; color: var(--white);
+  padding-bottom: 14px; border-bottom: 1px solid var(--rule); margin-bottom: 6px;
+}
+.card__spec { padding: 13px 0; border-top: 1px solid var(--rule-soft); }
+.card__spec:first-of-type { border-top: none; }
+.card__k {
+  display: block; font-family: var(--font-head); text-transform: uppercase;
+  font-weight: 600; font-size: 14px; letter-spacing: 0.07em; color: var(--gray);
+  margin-bottom: 5px;
+}
+.card__v {
+  display: block; font-size: 25px; line-height: 1.25; color: var(--white);
+  text-wrap: balance; overflow-wrap: anywhere;
+}
+
+/* ---- Numbered list (The Algorithm) ------------------------------------- */
+.numlist { display: flex; flex-direction: column; }
+.numitem {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+}
+.numitem:last-child { border-bottom: 1px solid var(--rule); }
+.numitem__n {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 40px;
+  color: var(--white);
+}
+.numitem__txt {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.03em;
+  color: var(--gray);
+  line-height: 1.25;
+}
+
+/* ---- Image grid (Where terrestrial... / Critical partner) -------------- */
+/* minmax(0,1fr) is REQUIRED so rows/cols don't expand to image intrinsic size
+   (a plain 1fr track has an auto minimum and would overflow the slide). */
+.grid { display: grid; gap: 28px; flex: 1; min-height: 0; }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-2r { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.tile { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+.tile__cap {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+.tile__img {
+  flex: 1;
+  width: 100%;
+  object-fit: cover;
+  min-height: 0;
+}
+
+/* ---- Footer (logo + page number) --------------------------------------- */
+.footer {
+  position: absolute;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  bottom: 34px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer .logo { height: 22px; opacity: 0.92; }
+.footer .pageno { font-family: var(--font-body); font-size: 17px; color: var(--gray-dim); }
+
+/* ---- Cover wordmark ---------------------------------------------------- */
+.cover-mark {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover-mark .word {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 118px;
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;     /* optical balance for tracking */
+}
+
+/* ---- Overlaid bullet list (Why We Win) --------------------------------- */
+.bullets { display: flex; flex-direction: column; gap: 36px; }
+.bullet {
+  font-family: var(--font-head);
+  font-weight: 300;
+  font-size: 34px;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: #ededed;
+  max-width: 26ch;
+}
+
+/* ---- Bar chart (pure CSS) ---------------------------------------------- */
+.chart { display: flex; flex-direction: column; height: 100%; }
+.chart__title {
+  font-family: var(--font-head); text-transform: uppercase; font-weight: 600;
+  font-size: 26px; letter-spacing: 0.04em; color: var(--white);
+}
+.chart__sub {
+  font-family: var(--font-body); font-size: 18px; color: var(--gray); margin-top: 8px;
+}
+.bars {
+  flex: 1; display: flex; align-items: flex-end; gap: 34px;
+  border-bottom: 1px solid var(--rule); padding-top: 40px;
+}
+.bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.bar__val { font-family: var(--font-head); font-weight: 300; font-size: 30px; color: var(--white); margin-bottom: 14px; }
+.bar__fill { width: 64%; background: linear-gradient(180deg, #efefef, #c9c9c9); }
+.bar__fill--dim { background: linear-gradient(180deg, #8a8a8a, #5f5f5f); }
+.bar__fill--accent { background: linear-gradient(180deg, #ffffff, #e6e6e6); }
+.barlabels { display: flex; gap: 34px; margin-top: 16px; }
+.barlabel {
+  flex: 1; text-align: center; font-family: var(--font-body);
+  font-size: 18px; line-height: 1.3; color: var(--gray);
+}
+
+/* ---- Section divider title (big title over full-bleed photo) ----------- */
+.section-title {
+  font-family: var(--font-head); text-transform: uppercase; font-weight: 300;
+  font-size: 84px; line-height: 1.02; letter-spacing: 0.012em; color: var(--white);
+}
+
+/* ---- Layout utilities -------------------------------------------------- */
+.spacer { flex: 1; }
+.row-gap-sm > * + * { margin-top: 16px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; flex: 1; align-items: center; }
+.split--40 { grid-template-columns: 42% 1fr; }
+.split--60 { grid-template-columns: 1fr 42%; }
+.mt-s { margin-top: 18px; } .mt-m { margin-top: 32px; } .mt-l { margin-top: 56px; }
+.center-y { display: flex; flex-direction: column; justify-content: center; }
+.w-half { max-width: 46%; }
+/* Keep a token from breaking, e.g. <span class="nowrap">3.5"屏 + OV2640</span>.
+   Or bind with &nbsp; around the "+". */
+.nowrap { white-space: nowrap; }

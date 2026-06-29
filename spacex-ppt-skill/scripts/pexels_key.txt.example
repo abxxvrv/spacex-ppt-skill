@@ -1,0 +1,6 @@
+# Pexels API key — required by fetch_images.py.
+# 1. Get a FREE key (instant, ~1 min) at: https://www.pexels.com/api/
+# 2. Copy this file to  pexels_key.txt  (same folder).
+# 3. Replace the placeholder below with your key (key only, on its own line).
+# Alternatively, set the PEXELS_API_KEY environment variable and skip the file.
+YOUR_FREE_PEXELS_KEY_HERE

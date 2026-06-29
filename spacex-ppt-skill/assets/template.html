@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Copy this file to your deck folder, keep the css path resolvable, and put
+     fetched photos in ./images/. Each <section class="slide"> is ONE slide.
+     Delete the layouts you don't use; duplicate the ones you do. Never nest
+     <section> inside a slide. Swap placeholder text + image paths. -->
+<link rel="stylesheet" href="css/deck.css">
+</head>
+<body>
+
+<!-- ============ 1. COVER ============ -->
+<!-- Use: title slide. Full-bleed hero photo, centered wordmark, title bottom-left. -->
+<section class="slide">
+  <img class="bg" src="images/photo-01.jpg" alt="">
+  <div class="scrim scrim--vignette"></div>
+  <div class="scrim scrim--b"></div>
+  <div class="cover-mark"><div class="word">COMPANY</div></div>
+  <div class="pad" style="justify-content:flex-end;">
+    <div class="headline headline--sentence" style="font-size:58px;">Presentation Title</div>
+    <div class="body mt-s" style="color:var(--gray-dim);">Month 2026</div>
+  </div>
+</section>
+
+<!-- ============ 2. SECTION DIVIDER ============ -->
+<!-- Use: chapter break. Full-bleed photo, big title + short intro, lower-left. -->
+<section class="slide">
+  <img class="bg bg--right" src="images/photo-02.jpg" alt="">
+  <div class="scrim scrim--l"></div>
+  <div class="pad" style="justify-content:center; max-width:52%;">
+    <div class="section-title">OUR<br>BUSINESS</div>
+    <p class="body mt-l">One or two sentences framing this section. Keep it short —
+      the photo carries the weight.</p>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">2</span></div>
+</section>
+
+<!-- ============ 3. SPLIT — text left, photo right ============ -->
+<!-- Use: narrative slide with 1-3 short paragraphs. -->
+<section class="slide">
+  <img class="bg bg--right" src="images/photo-03.jpg" alt="">
+  <div class="scrim scrim--l"></div>
+  <div class="pad" style="max-width:48%;">
+    <div class="headline">OUR MISSION</div>
+    <p class="body mt-l">First paragraph. Lead with the single most important idea.</p>
+    <p class="body">Second paragraph adds supporting context without crowding the page.</p>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">3</span></div>
+</section>
+
+<!-- ============ 4. STAT STACK beside photo ============ -->
+<!-- Use: 3-4 headline metrics. Big number + caption + short rule. -->
+<section class="slide">
+  <img class="bg bg--right" src="images/photo-04.jpg" alt="">
+  <div class="scrim scrim--l"></div>
+  <div class="pad" style="max-width:46%;">
+    <div class="headline">BY THE NUMBERS</div>
+    <div class="mt-l">
+      <div class="stat__num">50<span style="font-size:0.6em">+</span></div>
+      <div class="stat__label">Caption describing this metric</div>
+      <div class="stat__rule"></div>
+    </div>
+    <div class="mt-l">
+      <div class="stat__num">9,600<span style="font-size:0.6em">+</span></div>
+      <div class="stat__label">Caption describing this metric</div>
+      <div class="stat__rule"></div>
+    </div>
+    <div class="mt-l">
+      <div class="stat__num">99.9<span style="font-size:0.6em">%</span></div>
+      <div class="stat__label">Caption describing this metric</div>
+      <div class="stat__rule"></div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">4</span></div>
+</section>
+
+<!-- ============ 5. METRIC COLUMNS (N OF 1) ============ -->
+<!-- Use: compare pillars, each with a header + stacked metrics. cols-2/3/4/5/6.
+     metric__val is for SHORT values (numbers, ≤1 word). For multi-word / text
+     specs use layout 5b (product cards) instead — long values wrap badly here. -->
+<section class="slide">
+  <img class="bg" src="images/photo-05.jpg" alt="" style="top:auto; bottom:0; height:46%;">
+  <div class="scrim" style="background:linear-gradient(0deg,#000 0%,#000 18%,rgba(0,0,0,0) 60%);"></div>
+  <div class="pad">
+    <div class="eyebrow eyebrow--dim">N OF 1</div>
+    <div class="headline mt-s">BUILDING THE FUTURE</div>
+    <div class="cols cols-3 mt-l" style="flex:0;">
+      <div>
+        <div class="colhead">PILLAR ONE</div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">9,600+</div></div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">164</div></div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">350M</div></div>
+      </div>
+      <div>
+        <div class="colhead">PILLAR TWO</div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">75%</div></div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">25ms</div></div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">10.3M</div></div>
+      </div>
+      <div>
+        <div class="colhead">PILLAR THREE</div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">4</div></div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">550M</div></div>
+        <div class="metric"><div class="metric__label">Label<br>here</div><div class="metric__val">1.0GW</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">5</span></div>
+</section>
+
+<!-- ============ 5b. PRODUCT / SPEC CARDS ============ -->
+<!-- Use: a matrix of items (products, plans, segments) each with several
+     multi-word specs. This is the RIGHT layout for "product matrix" content —
+     stacked label/value wraps long text cleanly where metric columns don't.
+     Bind tokens that must not split with &nbsp; (e.g. "Spring&nbsp;Boot"). -->
+<section class="slide">
+  <img class="bg bg--right" src="images/photo-02.jpg" alt="">
+  <div class="scrim scrim--l"></div>
+  <div class="pad" style="max-width:62%;">
+    <div class="eyebrow eyebrow--dim">PRODUCT MATRIX</div>
+    <div class="headline mt-s">PRODUCT MATRIX</div>
+    <div class="cards cards-2 mt-l">
+      <div>
+        <div class="card__name">Item One</div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">A multi-word value that wraps cleanly</span></div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Short value</span></div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Another value</span></div>
+      </div>
+      <div>
+        <div class="card__name">Item Two</div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Value</span></div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Value + extra&nbsp;detail</span></div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Value</span></div>
+      </div>
+      <div>
+        <div class="card__name">Item Three</div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Value</span></div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Value</span></div>
+      </div>
+      <div>
+        <div class="card__name">Item Four</div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Value</span></div>
+        <div class="card__spec"><span class="card__k">Spec</span><span class="card__v">Value</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">5b</span></div>
+</section>
+
+<!-- ============ 6. LABEL / VALUE TABLE ============ -->
+<!-- Use: spec sheet / offering summary. Left label, right value, thin rules. -->
+<section class="slide">
+  <div class="pad">
+    <div class="headline">OFFERING SUMMARY</div>
+    <div class="rows mt-l">
+      <div class="row"><div class="row__label">Issuer</div><div class="row__value">Company Name Inc.</div></div>
+      <div class="row"><div class="row__label">Offering Size</div><div class="row__value">555.6M shares</div></div>
+      <div class="row"><div class="row__label">Price</div><div class="row__value">$135 per share</div></div>
+      <div class="row"><div class="row__label">Exchange / Ticker</div><div class="row__value">Nasdaq / TICK</div></div>
+      <div class="row"><div class="row__label">Use of Proceeds</div><div class="row__value">Fund growth strategy, infrastructure expansion, and general corporate purposes.</div></div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">6</span></div>
+</section>
+
+<!-- ============ 7. NUMBERED LIST + photo ============ -->
+<!-- Use: a process / ranked principles. Big index, label, rule; photo right. -->
+<section class="slide">
+  <div class="pad" style="max-width:46%;">
+    <div class="headline">THE PROCESS</div>
+    <div class="numlist mt-l">
+      <div class="numitem"><div class="numitem__n">01</div><div class="numitem__txt">First step stated plainly</div></div>
+      <div class="numitem"><div class="numitem__n">02</div><div class="numitem__txt">Second step</div></div>
+      <div class="numitem"><div class="numitem__n">03</div><div class="numitem__txt">Third step</div></div>
+      <div class="numitem"><div class="numitem__n">04</div><div class="numitem__txt">Fourth step</div></div>
+      <div class="numitem"><div class="numitem__n">05</div><div class="numitem__txt">Fifth step</div></div>
+    </div>
+  </div>
+  <img src="images/photo-06.jpg" alt="" style="position:absolute; right:86px; top:50%; transform:translateY(-50%); width:46%; height:62%; object-fit:cover; z-index:2;">
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">7</span></div>
+</section>
+
+<!-- ============ 8. FULL-BLEED + BULLETS ============ -->
+<!-- Use: punchy list over a dramatic photo. Big light text, generous spacing. -->
+<section class="slide">
+  <img class="bg bg--right" src="images/photo-02.jpg" alt="">
+  <div class="scrim scrim--l"></div>
+  <div class="pad" style="max-width:62%;">
+    <div class="headline">WHY WE WIN</div>
+    <div class="bullets mt-l">
+      <div class="bullet">A short, declarative advantage</div>
+      <div class="bullet">Another reason stated with confidence</div>
+      <div class="bullet">A third differentiator</div>
+      <div class="bullet">A fourth, if needed</div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">8</span></div>
+</section>
+
+<!-- ============ 9. IMAGE GRID (6-up) ============ -->
+<!-- Use: categories / use cases. Small caption above each tile. -->
+<section class="slide">
+  <div class="pad">
+    <div class="headline">WHERE WE OPERATE</div>
+    <div class="grid grid-3 grid-2r mt-l">
+      <div class="tile"><div class="tile__cap">Category One</div><img class="tile__img" src="images/photo-01.jpg" alt=""></div>
+      <div class="tile"><div class="tile__cap">Category Two</div><img class="tile__img" src="images/photo-03.jpg" alt=""></div>
+      <div class="tile"><div class="tile__cap">Category Three</div><img class="tile__img" src="images/photo-04.jpg" alt=""></div>
+      <div class="tile"><div class="tile__cap">Category Four</div><img class="tile__img" src="images/photo-05.jpg" alt=""></div>
+      <div class="tile"><div class="tile__cap">Category Five</div><img class="tile__img" src="images/photo-02.jpg" alt=""></div>
+      <div class="tile"><div class="tile__cap">Category Six</div><img class="tile__img" src="images/photo-06.jpg" alt=""></div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">9</span></div>
+</section>
+
+<!-- ============ 10. BAR CHART on black ============ -->
+<!-- Use: one clean comparison. Set each .bar__fill height inline (% of plot). -->
+<section class="slide">
+  <div class="pad">
+    <div class="headline">A MASSIVE MARKET</div>
+    <div class="chart mt-l">
+      <div class="chart__title">TOTAL ADDRESSABLE MARKET</div>
+      <div class="chart__sub">$ in billions</div>
+      <div class="bars">
+        <div class="bar"><div class="bar__val">$370</div><div class="bar__fill" style="height:12%"></div></div>
+        <div class="bar"><div class="bar__val">$870</div><div class="bar__fill" style="height:28%"></div></div>
+        <div class="bar"><div class="bar__val">$2.4T</div><div class="bar__fill bar__fill--dim" style="height:55%"></div></div>
+        <div class="bar"><div class="bar__val">$760</div><div class="bar__fill bar__fill--dim" style="height:24%"></div></div>
+        <div class="bar"><div class="bar__val">$5.7T</div><div class="bar__fill bar__fill--accent" style="height:92%"></div></div>
+      </div>
+      <div class="barlabels">
+        <div class="barlabel">Segment A</div>
+        <div class="barlabel">Segment B</div>
+        <div class="barlabel">Segment C</div>
+        <div class="barlabel">Segment D</div>
+        <div class="barlabel">Total</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">10</span></div>
+</section>
+
+<!-- ============ 11. CHART + PHOTO split ============ -->
+<!-- Use: a chart that still wants a hero photo. Chart left, photo bleeds right. -->
+<section class="slide">
+  <img class="bg bg--right" src="images/photo-04.jpg" alt="">
+  <div class="scrim scrim--seam"></div>
+  <div class="pad" style="max-width:54%;">
+    <div class="headline headline--sm">MARKET LEADERSHIP</div>
+    <div class="chart mt-m" style="height:64%;">
+      <div class="chart__title">SHARE OVER TIME</div>
+      <div class="bars">
+        <div class="bar"><div class="bar__val">45%</div><div class="bar__fill bar__fill--accent" style="height:45%"></div></div>
+        <div class="bar"><div class="bar__val">65%</div><div class="bar__fill bar__fill--accent" style="height:65%"></div></div>
+        <div class="bar"><div class="bar__val">80%+</div><div class="bar__fill bar__fill--accent" style="height:82%"></div></div>
+      </div>
+      <div class="barlabels">
+        <div class="barlabel">2024</div><div class="barlabel">2025</div><div class="barlabel">2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><img class="logo" src="logo.svg" alt=""><span class="pageno">11</span></div>
+</section>
+
+<!-- ============ 12. CLOSING ============ -->
+<!-- Use: final slide. Minimal, centered, lots of black. -->
+<section class="slide">
+  <img class="bg" src="images/photo-01.jpg" alt="">
+  <div class="scrim scrim--full"></div>
+  <div class="scrim scrim--vignette"></div>
+  <div class="cover-mark" style="flex-direction:column;">
+    <div class="word" style="font-size:84px;">THANK YOU</div>
+  </div>
+</section>
+
+</body>
+</html>

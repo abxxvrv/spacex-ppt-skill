@@ -1,0 +1,11 @@
+# Secret — never commit your real Pexels API key.
+# Each user creates their own pexels_key.txt from pexels_key.txt.example.
+spacex-ppt-skill/scripts/pexels_key.txt
+
+# Python
+__pycache__/
+*.pyc
+
+# OS cruft
+.DS_Store
+Thumbs.db
