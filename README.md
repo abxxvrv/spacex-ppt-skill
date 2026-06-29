@@ -42,7 +42,7 @@ spacex-ppt-skill/
 最简单的方式：把下面这句话发给你的智能体，让它自动安装：
 
 ```text
-请从这个 GitHub 仓库安装这个 Skill：https://github.com/abxxvrv/spacex-ppt-skill 。只安装仓库中的 spacex-ppt-skill 子目录到我的本地 skills 目录，目标路径为 ~/.codex/skills/spacex-ppt-skill，并确认其中的 SKILL.md 可以被正常发现。
+请从这个 GitHub 仓库安装这个 Skill：https://github.com/abxxvrv/spacex-ppt-skill 。只安装仓库中的 spacex-ppt-skill 子目录到我的本地 skills 目录，并确认其中的 SKILL.md 可以被正常发现。
 ```
 
 如果你想手动安装，也可以复制文件夹：
